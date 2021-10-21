@@ -1,0 +1,1 @@
+## dokumentacja: https://bit.ly/megak-konfigurator-ciastek
