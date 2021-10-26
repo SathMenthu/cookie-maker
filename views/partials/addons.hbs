@@ -3,6 +3,7 @@
     <li class="addons">Base: {{cookie.base}} - {{pricify (findPrice bases cookie.base)}} PLN</li>
     {{#each cookie.addons}}
         <li class="addons">
+
             {{#if ../noDeleteBtn}}
             {{else}}
                 <a href="/configurator/delete-addon/{{this}}" class="btn btn-small">Delete</a>
