@@ -1,23 +1,32 @@
 const express = require("express");
 
-const { getCookieSettings } = require("../utils/get-cookie-settings");
+class HomeRouter {
+  constructor(cmapp) {
+    this.cmapp = cmapp;
+    this.router = express.Router();
+    this.setUpRoutes();
+  }
 
-const homeRouter = express.Router();
+  setUpRoutes() {
+    this.router.get("/", this.home);
+  }
 
-homeRouter.get("/", (req, res) => {
-  const { base, addons, allBases, allAddons, sum } = getCookieSettings(req);
+  home = (req, res) => {
+    const { base, addons, allBases, allAddons, sum } =
+      this.cmapp.getCookieSettings(req);
 
-  res.render("home/index", {
-    cookie: {
-      base,
-      addons,
-    },
-    allBases,
-    allAddons,
-    sum,
-  });
-});
+    res.render("home/index", {
+      cookie: {
+        base,
+        addons,
+      },
+      allBases,
+      allAddons,
+      sum,
+    });
+  };
+}
 
 module.exports = {
-  homeRouter,
+  HomeRouter,
 };
